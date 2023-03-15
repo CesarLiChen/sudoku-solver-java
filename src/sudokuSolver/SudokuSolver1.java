@@ -22,6 +22,26 @@ public class SudokuSolver1 {
 		return false;
 	}
 	
+	private static boolean isNumberInBox(int[][] board, int number, int row, int column) {
+		int boxRow = row - row % 3;
+		int boxColumn = column - column % 3;
+		
+		for (int i = boxRow; i < boxRow + 3; i++) {
+			for (int j = boxColumn; j < boxColumn + 3; j++) {
+				if (board[i][j] == number) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+	
+	private static boolean isPlaceValid(int[][] board, int number, int row, int column) {
+		return !isNumberInRow(board, number, row) && 
+			!isNumberInColumn(board, number, column) &&
+			!isNumberInBox(board, number, row, column);
+	}
+	
 	public static void main(String[] args) {
 		int[][] board = {
 				{6, 4, 1, 3, 0, 0, 0, 0, 0},
