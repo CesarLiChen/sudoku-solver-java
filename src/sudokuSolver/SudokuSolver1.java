@@ -1,5 +1,7 @@
 package sudokuSolver;
 
+/* Sudoku Solver using Backtracking */
+
 public class SudokuSolver1 {
 	
 	private static final int GRID_SIZE = 9;
@@ -41,6 +43,8 @@ public class SudokuSolver1 {
 			!isNumberInColumn(board, number, column) &&
 			!isNumberInBox(board, number, row, column);
 	}
+	
+	
 	
 	public static void main(String[] args) {
 		int[][] board = {
