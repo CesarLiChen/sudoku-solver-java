@@ -46,11 +46,10 @@ public class SudokuSolver1 {
 	
 	private static boolean solveBoard(int[][] board) {
 		for (int i = 0; i < GRID_SIZE; i++) {
-			for (int j = 0; j < GRID_SIZE; j++) {
-				
+			for (int j = 0; j < GRID_SIZE; j++) {				
 				if (board[i][j] == 0) {
-					for (int numToTry = 1; numToTry <= GRID_SIZE; numToTry++) {
-						
+					
+					for (int numToTry = 1; numToTry <= GRID_SIZE; numToTry++) {						
 						if (isPlaceValid(board, numToTry, i, j)) {
 							board[i][j] = numToTry;
 							
@@ -64,9 +63,25 @@ public class SudokuSolver1 {
 					return false;
 				}
 			}
-		}
-		
+		}		
 		return true;
+	}
+	
+
+	private static void printBoard(int[][] board) {
+		for (int row = 0; row < GRID_SIZE; row++) {
+			if (row % 3 == 0 && row != 0) {
+				System.out.println("------------");
+			}
+			
+			for (int column = 0; column < GRID_SIZE; column++) {				
+				if (column % 3 == 0 && column != 0) {
+					System.out.print("|");
+				}
+				System.out.print(board[row][column]);
+			}
+			System.out.println();
+		}
 	}
 	
 	public static void main(String[] args) {
@@ -81,6 +96,13 @@ public class SudokuSolver1 {
 				{1, 0, 0, 7, 0, 5, 4, 0, 0},
 				{0, 0, 0, 6, 0, 0, 2, 8, 0}
 		};
+		
+//		if (solveBoard(board)) {
+//			System.out.println("Solved successfully");
+//		} else {
+//			System.out.println("Unsolvable");
+//		}
+		
+		printBoard(board);
 	}
-
 }
