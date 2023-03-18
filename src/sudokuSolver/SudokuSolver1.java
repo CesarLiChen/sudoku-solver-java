@@ -44,7 +44,30 @@ public class SudokuSolver1 {
 			!isNumberInBox(board, number, row, column);
 	}
 	
-	
+	private static boolean solveBoard(int[][] board) {
+		for (int i = 0; i < GRID_SIZE; i++) {
+			for (int j = 0; j < GRID_SIZE; j++) {
+				
+				if (board[i][j] == 0) {
+					for (int numToTry = 1; numToTry <= GRID_SIZE; numToTry++) {
+						
+						if (isPlaceValid(board, numToTry, i, j)) {
+							board[i][j] = numToTry;
+							
+							if (solveBoard(board)) {
+								return true;
+							} else {
+								board[i][j] = 0;
+							}
+						}
+					}
+					return false;
+				}
+			}
+		}
+		
+		return true;
+	}
 	
 	public static void main(String[] args) {
 		int[][] board = {
