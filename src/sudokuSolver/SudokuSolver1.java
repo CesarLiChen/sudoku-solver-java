@@ -97,11 +97,15 @@ public class SudokuSolver1 {
 				{0, 0, 0, 6, 0, 0, 2, 8, 0}
 		};
 		
-//		if (solveBoard(board)) {
-//			System.out.println("Solved successfully");
-//		} else {
-//			System.out.println("Unsolvable");
-//		}
+		printBoard(board);
+		
+		System.out.println("========================");
+		
+		if (solveBoard(board)) {
+			System.out.println("Solved successfully");
+		} else {
+			System.out.println("Unsolvable");
+		}
 		
 		printBoard(board);
 	}
